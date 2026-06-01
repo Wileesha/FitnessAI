@@ -40,6 +40,12 @@ namespace FitnessAI.Application.Services
         }
         public void CreateUser(CreateUserDto dto)
         {
+            var existingUser = _context.Users.FirstOrDefault(x => x.Email == dto.Email);
+
+            if (existingUser != null)
+            {
+                throw new Exception("Email already exists");
+            }
             var user = new User
             {
                 Name = dto.Name,
