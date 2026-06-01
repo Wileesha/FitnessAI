@@ -15,5 +15,6 @@ namespace FitnessAI.Core.Interfaces
         void CreateUser(CreateUserDto user);
         void UpdateUser(int id, UpdateUserDto user);
         void DeleteUser(int id);
+        string Login(LoginDto dto);
     }
 }
