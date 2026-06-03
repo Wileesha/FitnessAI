@@ -4,21 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessAI.Core.Entities
+namespace FitnessAI.Core.DTOs
 {
-    public class WorkoutPlan
+    public class UpdateWorkoutPlanDto
     {
-        public int WorkoutPlanId { get; set; }
-
-        public int UserId { get; set; }
-
         public string WorkoutName { get; set; }
 
         public string Goal { get; set; }
 
         public int DurationInWeeks { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-        public User User { get; set; }
     }
 }

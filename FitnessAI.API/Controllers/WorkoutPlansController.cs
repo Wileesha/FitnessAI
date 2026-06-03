@@ -44,6 +44,19 @@ namespace FitnessAI.API.Controllers
 
             return Ok(workoutPlan);
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdateWorkoutPlan(int id, UpdateWorkoutPlanDto dto)
+        {
+            _workoutPlanService.UpdateWorkoutPlan(id, dto);
 
+            return Ok("Workout Plan Updated Successfully");
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteWorkoutPlan(int id)
+        {
+            _workoutPlanService.DeleteWorkoutPlan(id);
+
+            return Ok("Workout Plan Deleted Successfully");
+        }
     }
 }

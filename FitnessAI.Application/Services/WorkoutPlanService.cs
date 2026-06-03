@@ -2,6 +2,7 @@
 using FitnessAI.Core.Entities;
 using FitnessAI.Core.Interfaces;
 using FitnessAI.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace FitnessAI.Application.Services
 {
-    
-    public class WorkoutPlanService: IWorkoutPlanService
+
+    public class WorkoutPlanService : IWorkoutPlanService
     {
         private readonly FitnessDbContext _context;
         public WorkoutPlanService(FitnessDbContext context)
@@ -36,6 +37,7 @@ namespace FitnessAI.Application.Services
         public List<GetWorkoutPlanDto> GetAllWorkoutPlans()
         {
             return _context.WorkoutPlans
+                .Include(x=>x.User)
                 .Select(x => new GetWorkoutPlanDto
                 {
                     WorkoutPlanId = x.WorkoutPlanId,
@@ -61,6 +63,28 @@ namespace FitnessAI.Application.Services
                     CreatedDate = x.CreatedDate
                 })
                 .FirstOrDefault();
+        }
+        public void UpdateWorkoutPlan(int id, UpdateWorkoutPlanDto dto)
+        {
+            var workoutPlan = _context.WorkoutPlans.FirstOrDefault(x => x.WorkoutPlanId == id);
+            if (workoutPlan == null)
+            {
+                throw new Exception("Workout Plan not found");
+            }
+            workoutPlan.WorkoutName = dto.WorkoutName;
+            workoutPlan.Goal = dto.Goal;
+            workoutPlan.DurationInWeeks = dto.DurationInWeeks;
+            _context.SaveChanges();
+        }
+        public void DeleteWorkoutPlan(int id)
+        {
+            var workoutPlan = _context.WorkoutPlans.FirstOrDefault(x => x.WorkoutPlanId == id);
+            if (workoutPlan == null)
+            {
+                throw new Exception("Workout Plan not found");
+            }
+            _context.WorkoutPlans.Remove(workoutPlan);
+            _context.SaveChanges();
         }
     }
 }

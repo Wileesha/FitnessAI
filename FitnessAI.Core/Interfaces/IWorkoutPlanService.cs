@@ -14,6 +14,9 @@ namespace FitnessAI.Core.Interfaces
         List<GetWorkoutPlanDto> GetAllWorkoutPlans();
 
         GetWorkoutPlanDto GetWorkoutPlanById(int id);
+        void UpdateWorkoutPlan(int id, UpdateWorkoutPlanDto dto);
+
+        void DeleteWorkoutPlan(int id);
 
     }
 }
