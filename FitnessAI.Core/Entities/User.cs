@@ -14,5 +14,6 @@ namespace FitnessAI.Core.Entities
         public string PasswordHash { get; set; }
         public DateTime CreatedDate { get; set; }
         public ICollection<WorkoutPlan> WorkoutPlans { get; set; }
+        public ICollection<MealPlan> MealPlans { get; set; }
     }
 }
