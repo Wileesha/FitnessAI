@@ -47,6 +47,8 @@ builder.Services.AddDbContext<FitnessDbContext>(options=>
 builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<IWorkoutPlanService, WorkoutPlanService>();
 builder.Services.AddScoped<IMealPlanService, MealPlanService>();
+builder.Services.AddScoped<IProgressService, ProgressService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

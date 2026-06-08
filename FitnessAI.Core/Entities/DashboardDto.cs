@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FitnessAI.Core.DTOs;
+
+namespace FitnessAI.Core.Entities
+{
+    public class DashboardDto
+    {
+        public int TotalUsers { get; set; }
+
+        public int TotalWorkoutPlans { get; set; }
+
+        public int TotalMealPlans { get; set; }
+
+        public int TotalProgressRecords { get; set; }
+    }
+}
