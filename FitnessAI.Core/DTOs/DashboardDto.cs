@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FitnessAI.Core.DTOs;
 
-namespace FitnessAI.Core.Entities
+namespace FitnessAI.Core.DTOs
 {
     public class DashboardDto
     {
@@ -16,5 +15,6 @@ namespace FitnessAI.Core.Entities
         public int TotalMealPlans { get; set; }
 
         public int TotalProgressRecords { get; set; }
+        public decimal AverageWeight { get; set; }
     }
 }

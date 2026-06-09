@@ -1,5 +1,4 @@
 ﻿using FitnessAI.Core.DTOs;
-using FitnessAI.Core.Entities;
 using FitnessAI.Core.Interfaces;
 using FitnessAI.Infrastructure.Data;
 using System;
@@ -24,9 +23,21 @@ namespace FitnessAI.Application.Services
             return new DashboardDto
             {
                 TotalUsers = _context.Users.Count(),
-                TotalWorkoutPlans = _context.WorkoutPlans.Count(),
-                TotalMealPlans = _context.MealPlans.Count(),
-                TotalProgressRecords = _context.ProgressRecords.Count()
+
+                TotalWorkoutPlans =
+        _context.WorkoutPlans.Count(),
+
+                TotalMealPlans =
+        _context.MealPlans.Count(),
+
+                TotalProgressRecords =
+        _context.ProgressRecords.Count(),
+
+                AverageWeight =
+        _context.ProgressRecords.Any()
+        ?
+        _context.ProgressRecords.Average(x => x.Weight)
+        : 0
             };
         }
 
