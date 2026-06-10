@@ -12,5 +12,8 @@ namespace FitnessAI.Core.Interfaces
         NutritionRecommendationDto GetRecommendation(
             decimal weight,
             string goal);
+        BmiResultDto CalculateBmi(
+    decimal weight,
+    decimal heightCm);
     }
 }

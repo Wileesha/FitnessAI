@@ -17,6 +17,7 @@ namespace FitnessAI.Infrastructure.Data
         public DbSet<WorkoutPlan> WorkoutPlans { get; set; }
         public DbSet<MealPlan> MealPlans { get; set; }
         public DbSet<Progress> ProgressRecords { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
     }
 }

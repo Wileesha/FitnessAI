@@ -16,5 +16,6 @@ namespace FitnessAI.Core.Entities
         public ICollection<WorkoutPlan> WorkoutPlans { get; set; }
         public ICollection<MealPlan> MealPlans { get; set; }
         public ICollection<Progress> ProgressRecords { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 }

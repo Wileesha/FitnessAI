@@ -49,6 +49,7 @@ builder.Services.AddScoped<IWorkoutPlanService, WorkoutPlanService>();
 builder.Services.AddScoped<IMealPlanService, MealPlanService>();
 builder.Services.AddScoped<IProgressService, ProgressService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 builder.Services.AddScoped<INutritionService,
                            NutritionService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

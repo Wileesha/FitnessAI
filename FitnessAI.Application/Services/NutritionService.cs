@@ -44,5 +44,34 @@ namespace FitnessAI.Application.Services
                 Recommendation = recommendation
             };
         }
+        public BmiResultDto CalculateBmi(
+    decimal weight,
+    decimal heightCm)
+        {
+            decimal heightM = heightCm / 100;
+
+            decimal bmi =
+                weight /
+                (heightM * heightM);
+
+            string category;
+
+            if (bmi < 18.5m)
+                category = "Underweight";
+            else if (bmi < 25)
+                category = "Normal";
+            else if (bmi < 30)
+                category = "Overweight";
+            else
+                category = "Obese";
+
+            return new BmiResultDto
+            {
+                Weight = weight,
+                HeightCm = heightCm,
+                BMI = Math.Round(bmi, 2),
+                Category = category
+            };
+        }
     }
 }

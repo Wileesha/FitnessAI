@@ -29,5 +29,15 @@ namespace FitnessAI.API.Controllers
 
             return Ok(result);
         }
+        [HttpGet("bmi")]
+        public IActionResult CalculateBmi(
+    decimal weight,
+    decimal heightCm)
+        {
+            return Ok(
+                _nutritionService.CalculateBmi(
+                    weight,
+                    heightCm));
+        }
     }
 }
