@@ -11,8 +11,8 @@ namespace FitnessAI.Application.Services
     public class NutritionService : INutritionService
     {
         public NutritionRecommendationDto GetRecommendation(
-            decimal weight,
-            string goal)
+    decimal weight,
+    string goal)
         {
             int calories;
             string recommendation;
@@ -20,20 +20,23 @@ namespace FitnessAI.Application.Services
             if (goal == "Weight Loss")
             {
                 calories = 1800;
+
                 recommendation =
-                    "Maintain calorie deficit and high protein intake.";
+                    "High protein + calorie deficit";
             }
             else if (goal == "Muscle Gain")
             {
                 calories = 2800;
+
                 recommendation =
-                    "Increase protein intake and strength training.";
+                    "High protein + strength training";
             }
             else
             {
                 calories = 2200;
+
                 recommendation =
-                    "Maintain balanced nutrition.";
+                    "Balanced diet";
             }
 
             return new NutritionRecommendationDto
@@ -71,6 +74,64 @@ namespace FitnessAI.Application.Services
                 HeightCm = heightCm,
                 BMI = Math.Round(bmi, 2),
                 Category = category
+            };
+        }
+        public DailyCaloriesDto CalculateDailyCalories(
+    decimal weight,
+    decimal heightCm,
+    int age,
+    string gender,
+    string goal)
+        {
+            decimal bmr;
+
+            if (gender == "Male")
+            {
+                bmr =
+                    (10 * weight)
+                    +
+                    (6.25m * heightCm)
+                    -
+                    (5 * age)
+                    +
+                    5;
+            }
+            else
+            {
+                bmr =
+                    (10 * weight)
+                    +
+                    (6.25m * heightCm)
+                    -
+                    (5 * age)
+                    -
+                    161;
+            }
+
+            decimal calories;
+
+            if (goal == "Weight Loss")
+            {
+                calories = bmr - 500;
+            }
+            else if (goal == "Muscle Gain")
+            {
+                calories = bmr + 300;
+            }
+            else
+            {
+                calories = bmr;
+            }
+
+            return new DailyCaloriesDto
+            {
+                Weight = weight,
+                HeightCm = heightCm,
+                Age = age,
+                Gender = gender,
+                Goal = goal,
+                DailyCalories =
+                    Math.Round(calories, 2)
             };
         }
     }

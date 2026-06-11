@@ -16,5 +16,6 @@ namespace FitnessAI.Core.DTOs
 
         public int TotalProgressRecords { get; set; }
         public decimal AverageWeight { get; set; }
+        public decimal AverageBodyFat { get; set; }
     }
 }

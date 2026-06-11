@@ -37,7 +37,15 @@ namespace FitnessAI.Application.Services
         _context.ProgressRecords.Any()
         ?
         _context.ProgressRecords.Average(x => x.Weight)
-        : 0
+        : 0,
+                AverageBodyFat =
+_context.ProgressRecords.Any()
+?
+_context.ProgressRecords
+.Average(
+x =>
+x.BodyFatPercentage)
+: 0
             };
         }
 

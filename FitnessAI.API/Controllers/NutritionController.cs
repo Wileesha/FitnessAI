@@ -39,5 +39,20 @@ namespace FitnessAI.API.Controllers
                     weight,
                     heightCm));
         }
+        [HttpGet("daily-calories")]
+        public IActionResult CalculateDailyCalories(decimal weight, decimal heightCm, int age, string gender, string goal)
+
+        {
+            var result =
+                _nutritionService
+                .CalculateDailyCalories(
+                    weight,
+                    heightCm,
+                    age,
+                    gender,
+                    goal);
+
+            return Ok(result);
+        }
     }
 }

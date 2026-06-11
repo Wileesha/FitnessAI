@@ -15,5 +15,11 @@ namespace FitnessAI.Core.Interfaces
         BmiResultDto CalculateBmi(
     decimal weight,
     decimal heightCm);
+        DailyCaloriesDto CalculateDailyCalories(
+    decimal weight,
+    decimal heightCm,
+    int age,
+    string gender,
+    string goal);
     }
 }
